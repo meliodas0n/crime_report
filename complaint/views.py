@@ -30,7 +30,7 @@ def comp(request):
             New message: {}
             From: {}
         '''.format(data['name'], data['phone'], data['message'], data['email'])
-        send_mail(data['subject'], message, '', ['mrunalnarayana@gmail.com'])
+        send_mail(data['subject'], message, '', ['mail@address.com']) # change the mail@address.com to ur desired mail address
 
 
 
