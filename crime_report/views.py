@@ -7,15 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 
-# this is for home page
-
-
 def index(request):
     return render(request, 'crime_report/home.html')
-
-# this is for login
-# TODO: might have to create an Login Page
-
 
 def registerpage(request):
     if request.user.is_authenticated:
@@ -29,7 +22,6 @@ def registerpage(request):
                 user = form.cleaned_data.get('username')
                 messages.success(request, 'Account was Created for ' + user)
                 return redirect('login')
-
     context = {'form': form}
     return render(request, 'register/register.html', context)
 
@@ -68,27 +60,15 @@ def feed(request):
     desc = []
     news = []
     img = []
-
     for i in range(len(articles)):
         article = articles[i]
         desc.append(article['description'])
         news.append(article['title'])
         img.append(article['urlToImage'])
     myList = zip(news, desc, img)
-
     return render(request, 'news/news.html', context={"myList": myList})
-
-# this is for Complaint Page
-@login_required(login_url='login')
-def comp(request):
-    return render(request, 'complaint/complaint.html')
 
 # this is for checking the complaint page
 @login_required(login_url='login')
 def status(request):
     return render(request, 'status/status.html')
-
-# this is the maps location page
-@login_required(login_url='login')
-def location(request):
-    return render(request, 'maps/maps.html')

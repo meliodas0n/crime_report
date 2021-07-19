@@ -3,12 +3,12 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: aliceblue;
 }
 
 .header {
+    background-color: antiquewhite;
     background-image: none;
-    min-height: 100vh;
+    min-height: 10vh;
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -23,7 +23,7 @@ nav {
 }
 
 nav img {
-    width: 350px;
+    width: 300px;
 }
 
 .nav-links {
@@ -60,4 +60,8 @@ nav img {
 
 nav .fa {
     display: none;
+}
+
+.map {
+    color: aliceblue;
 }

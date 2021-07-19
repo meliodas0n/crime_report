@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from location import views as location_views
+from complaint import views as complaint_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +27,7 @@ urlpatterns = [
     path('register/', views.registerpage, name = 'register'),
     path('login/', views.loginpage, name = 'login'),
     path('logout/', views.logoutUser, name='logout'),
-    path('complaint/', views.comp, name = 'complaint'),
+    path('complaint/', complaint_views.comp, name = 'complaint'),
     path('status/', views.status, name = 'status'),
-    path('maps/', views.location, name = 'location')
+    path('maps/', location_views.index, name='location')
 ]

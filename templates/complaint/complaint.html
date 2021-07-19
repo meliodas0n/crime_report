@@ -13,7 +13,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-
     <body>
         <section class="header">
             <nav>
@@ -23,7 +22,7 @@
                         <ul>
                             <li><a href="{% url 'home' %}">HOME</a></li>
                             <li><a href="{% url 'feed' %}">NEWS</a></li>
-                            <li><a href="{% url 'login' %}">LOGIN</a></li>
+                            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
                             <li><a href="{% url 'complaint' %}">COMPLAINT</a></li>
                             <li><a href="{% url 'status' %}">STATUS</a></li>
                             <li><a href="{% url 'location' %}">LOCATION</a></li>
@@ -31,6 +30,37 @@
                 </div>
                 <i class="fa fa-bars" onclick="showMenu()"></i>
             </nav>
+        </section>
+        <section class="complaintSection">
+            <h1>Complaint Form</h1>
+            <div class="container">
+                <form action="" method="POST" class="contact-form">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <div class="tag">Full Name</div>
+                        <input type="text" name="full-name">
+                    </div>
+                    <div class="form-control">
+                        <div class="tag">Phone No</div>
+                        <input type="phone" name="phone-number">
+                    </div>
+                    <div class="form-control">
+                        <div class="tag">Email Id</div>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="form-control">
+                        <div class="tag">Subject</div>
+                        <input type="text" name="subject">
+                    </div>
+                    <div class="form-control">
+                        <div class="tag">Message</div>
+                        <textarea name="message" cols="70" rows="10"></textarea>
+                    </div>
+                    <div class="form-control">
+                        <input type="submit" class="btn submit-btn" value="File Complaint">
+                    </div>
+                </form>
+            </div>
         </section>
     </body>
 </html>
