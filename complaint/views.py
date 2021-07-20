@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import smtplib
+from complaint.models import Complaint
 
 # Create your views here.
 
@@ -15,7 +16,8 @@ def comp(request):
         phone = request.POST.get('phone-number')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-
+        complaint = Complaint(name = name, email = email, phonenumber = phone, subject = subject, description = message)
+        complaint.save()
         data = {
             'name' : name,
             'email' : email,
@@ -23,15 +25,11 @@ def comp(request):
             'subject' : subject,
             'message' : message
         }
-
         message = '''
             Name: {}
             Phone: {}
             New message: {}
             From: {}
         '''.format(data['name'], data['phone'], data['message'], data['email'])
-        send_mail(data['subject'], message, '', ['mail@address.com']) # change the mail@address.com to ur desired mail address
-
-
-
+        send_mail(data['subject'], message, '', ['djangoproject6378121@gmail.com']) # change the mail@address.com to ur desired mail address
     return render(request, 'complaint/complaint.html')
