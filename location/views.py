@@ -20,8 +20,7 @@ def index(request):
     lat = location.lat
     lng = location.lng
     country = location.country
-    if lat == None or lng == None:
-        address.delete()
+    if lat == None or lng == None or address == None:
         return HttpResponse('You address input is invalid')
     # Create Map Object
     m = folium.Map(location=[19, -12], zoom_start=2)
