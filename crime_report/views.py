@@ -7,8 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 
-def index(request):
-    return render(request, 'crime_report/home.html')
+def index(request): return render(request, 'crime_report/home.html')
 
 def registerpage(request):
     if request.user.is_authenticated:
@@ -24,7 +23,6 @@ def registerpage(request):
                 return redirect('login')
     context = {'form': form}
     return render(request, 'register/register.html', context)
-
 
 def loginpage(request):
     if request.user.is_authenticated:
@@ -42,15 +40,10 @@ def loginpage(request):
     context = {}
     return render(request, 'register/login.html', context)
 
-
 def userhome(request):
     return render(request, 'crime_report/userhome.html')
 
-
-def logoutUser(request):
-    logout(request)
-    return redirect('home')
-
+def logoutUser(request): logout(request); return redirect('home')
 
 # this is for NEWS FEED
 def feed(request):
@@ -70,5 +63,4 @@ def feed(request):
 
 # this is for checking the complaint page
 @login_required(login_url='login')
-def status(request):
-    return render(request, 'status/status.html')
+def status(request): return render(request, 'status/status.html')
