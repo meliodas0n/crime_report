@@ -8,9 +8,7 @@ import geocoder
 # Create your views here.
 
 def map(request, address):
-
-    print(f"{address = }")
-    headers = {"User-Agent": "CrimeReport/1.0 (mrunal.narayana@gmail.com)"}
+    headers = {"User-Agent": "CrimeReport/1.0 (crimereport@gmail.com)"}
     location = geocoder.get(address, provider='osm', headers=headers)
     print(f"{location = }")
     lat = location.lat
