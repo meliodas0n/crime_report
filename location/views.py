@@ -8,16 +8,10 @@ import geocoder
 # Create your views here.
 
 def map(request, address):
-    print(f"{__name__ = } {request = }")
-    # if request.method == 'POST':
-    #     form = SearchForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('/')
-    # else:
-    #     form = SearchForm()
+
     print(f"{address = }")
-    location = geocoder.osm(address)
+    headers = {"User-Agent": "CrimeReport/1.0 (mrunal.narayana@gmail.com)"}
+    location = geocoder.get(address, provider='osm', headers=headers)
     print(f"{location = }")
     lat = location.lat
     lng = location.lng
@@ -28,12 +22,9 @@ def map(request, address):
     m = folium.Map(location=[19, -12], zoom_start=2)
     folium.Marker([lat, lng], tooltip='Click for more', popup=country).add_to(m)
     # Get HTML Representation of Map Object
-    m = m._repr_html_()
-    # context = {'m': m, 'form': form}
-    return render(request, 'location/maps.html', {"m": m})
+    return render(request, 'location/maps.html', {"m": m._repr_html_()})
 
 def search(request):
-    print(f"{__name__ = } {request = }")
     if request.method == 'POST':
         address = request.POST.get('address')
         return redirect('map', address=address)
