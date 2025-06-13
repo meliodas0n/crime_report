@@ -29,5 +29,6 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     path('complaint/', complaint_views.comp, name = 'complaint'),
     path('status/', views.status, name = 'status'),
-    path('maps/', location_views.index, name='location')
+    path('location_search/', location_views.search, name='location'),
+    path("location_map/<str:address>", location_views.map, name='map')
 ]

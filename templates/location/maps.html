@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Maps</title>
-        <link rel="stylesheet" href="{% static 'maps/maps.css'%}?{% now "U" %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'location/maps.css' %}?{% now "U" %}" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;700&display=swap" rel="stylesheet">
@@ -26,19 +26,12 @@
                             <li><a href="{% url 'login' %}">LOGIN</a></li>
                             <li><a href="{% url 'complaint' %}">COMPLAINT</a></li>
                             <li><a href="{% url 'status' %}">STATUS</a></li>
-                            <li>
-                                <form class="form-inline my-2 my-lg-0" method="POST">
-                                    {% csrf_token %}
-                                    {{ form|crispy }}
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                              </form>
-                            </li>
                         </ul>
                 </div>
                 <i class="fa fa-bars" onclick="showMenu()"></i>
             </nav>
-        </section class="map">
-        <section>
+        </section>
+        <section class="map">
             <div class="container">
                 <div class="row mt-4">
                     <div class="col-md-10 offset-md-1">
