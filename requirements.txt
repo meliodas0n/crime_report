@@ -1,5 +1,5 @@
 django
 django-crispy-forms
-newapi-python
+newsapi-python
 folium
 geocoder
