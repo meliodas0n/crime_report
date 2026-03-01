@@ -1,5 +1,0 @@
-django
-django-crispy-forms
-newsapi-python
-folium
-geocoder
